@@ -17,7 +17,7 @@ class LocationContainer extends Component {
         return (
         <div>
             Hello World
-            {LocationStore.locations}
+            {/* {LocationStore} */}
         </div>
         );
     }

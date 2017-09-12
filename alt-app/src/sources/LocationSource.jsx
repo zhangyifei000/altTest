@@ -1,4 +1,4 @@
-import LocationAction from '../actions/LocationActions'
+import LocationActions from '../actions/LocationActions'
 
 var mockData = [
   { id: 0, name: 'Abu Dhabi' },
@@ -16,32 +16,36 @@ var mockData = [
   { id: 12, name: 'San Francisco' }
 ];
 
-const LocationSource = {
-    fetchLocation() {
-        return {
-            remote(state) {     // remotely fetch something (required)
-                return new Promise((resolve, reject) => {
-                    setTimeout(function() {
-                        resolve(mockData)
-                    }, 1000);
-                });
-            },
-            // local(state) {     
-                // this function checks in our local cache first
-                // if the value is present it'll use that instead (optional).
-    
-            // },
-            // here we setup some actions to handle our response
-            // loading: LocationAction.loadingAction
-            success: LocationAction.fetchLocationSuccess,
-            error: LocationAction.fetchLocationFailed
-            // should fetch has precedence over the value returned by local in determining whether remote should be called
-            // in this particular example if the value is present locally it would return but still fire off the remote request (optional)
-            // shouldFetch(state) {
-            //  return true
-            // }
-        }
-    }
-}
+var LocationSource = {
+  getLocations() {
+    return {
+      remote() {
+        return new Promise(function (resolve, reject) {
+          // simulate an asynchronous flow where data is fetched on
+          // a remote server somewhere.
+          setTimeout(function () {
 
-export default LocationSource;
+            // change this to `false` to see the error action being handled.
+            if (true) {
+              // resolve with some mock data
+              resolve(mockData);
+            } else {
+              reject('Things have broken');
+            }
+          }, 250);
+        });
+      },
+
+      local() {
+        // Never check locally, always fetch remotely.
+        return null;
+      },
+
+      success: LocationActions.fetchLocationSuccess,
+      error: LocationActions.fetchLocationFailed
+      // loading: LocationActions.fetchLocations
+    }
+  }
+};
+
+module.exports = LocationSource;

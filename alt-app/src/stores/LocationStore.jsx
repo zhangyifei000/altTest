@@ -8,12 +8,12 @@ class LocationStore {
         this.locations = [];
         this.errorMessage = '';
 
-        this.bindListeners = {
-            handleUpdateLocations: LocationActions.updateLocations,
-            handleFetchLocations: LocationActions.fetchLocations,
-            handleFetchLocationSuccess: LocationActions.fetchLocationSuccess,
-            handleFetchLocationFailed: LocationActions.fetchLocationFailed
-        }
+        this.bindListeners ({
+            handleUpdateLocations: LocationActions.UPDATE_LOCATIONS,
+            handleFetchLocations: LocationActions.FETCH_LOCATIONS,
+            handleFetchLocationSuccess: LocationActions.FETCH_LOCATION_SUCCESS,
+            handleFetchLocationFailed: LocationActions.FETCH_LOCATION_FAILED
+        });
 
         this.exportAsync(LocationSource)
     }
@@ -23,7 +23,7 @@ class LocationStore {
     }
 
     handleFetchLocations() {
-        this.getInstance().fetchLocation()
+        this.getInstance().getLocations()
     }
 
     // 异步调用时成功和失败都要在store里处理不然使用alt isLocaing会有bug
