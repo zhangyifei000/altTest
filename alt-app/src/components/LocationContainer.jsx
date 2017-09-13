@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import LocationActions from '../actions/LocationActions';
-// import LocationStore from '../stores/LocationStore'
+import LocationStore from '../stores/LocationStore'
 
 class LocationContainer extends Component {
     constructor(props) {

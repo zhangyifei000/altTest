@@ -44,7 +44,6 @@ var LocationSource = {
 
       success: LocationActions.fetchLocationSuccess,
       error: LocationActions.fetchLocationFailed
-      // loading: LocationActions.fetchLocations
     }
   }
 };
