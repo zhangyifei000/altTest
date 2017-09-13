@@ -6,8 +6,8 @@ class LocationActions {
         return {locations}
     }
 
-    fetchLocations() {
-        return {}
+    fetchLocations(data) {
+        return data
     }
 
     fetchLocationSuccess(responseJson) {

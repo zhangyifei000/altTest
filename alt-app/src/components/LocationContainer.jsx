@@ -10,7 +10,7 @@ class LocationContainer extends Component {
     }
 
     componentDidMount() {
-        LocationActions.fetchLocations()
+        LocationActions.fetchLocations({extraPrams: "actionParams"})
     }
 
     componentWillReceiveProps(nextProps) {

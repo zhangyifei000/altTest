@@ -21,8 +21,10 @@ class LocationStore {
         this.locations = locations
     }
 
-    handleFetchLocations() {
-        this.getInstance().getLocations()
+    handleFetchLocations(data) {
+        const params = Object.assign({}, data, {name: "Bill"})
+
+        this.getInstance().getLocations(params)
     }
 
     // 异步调用时成功和失败都要在store里处理不然使用alt isLocaing会有bug

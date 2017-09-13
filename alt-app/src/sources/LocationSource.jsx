@@ -19,10 +19,11 @@ var mockData = [
 var LocationSource = {
   getLocations() {
     return {
-      remote() {
+      remote(state, data) {
         return new Promise(function (resolve, reject) {
           // simulate an asynchronous flow where data is fetched on
           // a remote server somewhere.
+          console.log(state, data);
           setTimeout(function () {
 
             // change this to `false` to see the error action being handled.
