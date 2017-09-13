@@ -3,19 +3,19 @@ import alt from '../alt'
 class LocationActions {
 
     updateLocations(locations) {
-        this.dispatch(locations)
+        return {locations}
     }
 
     fetchLocations() {
-        this.dispatch()
+        return {}
     }
 
-    fetchLocationSuccess(responseJason) {
-        this.dispatch(responseJason)
+    fetchLocationSuccess(responseJson) {
+        return responseJson
     }
 
     fetchLocationFailed() {
-        this.dispatch()
+        return {}
     }
 }
 

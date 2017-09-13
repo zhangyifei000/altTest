@@ -4,9 +4,8 @@ import  LocationSource from '../sources/LocationSource';
 
 class LocationStore {
     constructor() {
-
-        this.locations = [];
-        this.errorMessage = '';
+        this.locations = []
+        this.errorMessage = ''
 
         this.bindListeners ({
             handleUpdateLocations: LocationActions.UPDATE_LOCATIONS,
@@ -28,12 +27,13 @@ class LocationStore {
 
     // 异步调用时成功和失败都要在store里处理不然使用alt isLocaing会有bug
 
-    handleFetchLocationSuccess(responseJason) {
-        this.locations = responseJason
+    handleFetchLocationSuccess(locations) {
+
+        this.locations = locations;
     }
 
     handleFetchLocationFailed() {
-        this.errorMessage = "获取失败"
+        this.errorMessage = "failed"
     }
 }
 

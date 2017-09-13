@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
-import LocationStore from '../stores/LocationStore';
 import LocationActions from '../actions/LocationActions';
+// import LocationStore from '../stores/LocationStore'
 
 class LocationContainer extends Component {
     constructor(props) {
@@ -13,14 +13,29 @@ class LocationContainer extends Component {
         LocationActions.fetchLocations()
     }
 
+    componentWillReceiveProps(nextProps) {
+        // eslint-disable-next-line
+        console.log(nextProps)
+    }
+
     render() {
         return (
         <div>
-            Hello World
-            {/* {LocationStore} */}
+             <LocationList locationList={this.props.locations}/>
         </div>
         );
     }
+}
+
+const LocationList = (props) => {
+
+    return (<ul>
+            {
+                props.locationList.map((location) => {
+                    return (<li key={location.id}>{location.name}</li>);
+                })
+            }
+            </ul>)
 }
 
 export default LocationContainer;
